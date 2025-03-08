@@ -28,9 +28,10 @@ before_script:
 pages:
   stage: deploy
   script:
-    - mkdir -p public
-    - shopt -s extglob # Enable extended pattern matching
-    - cp -r !(public) public/ # Copy everything except 'public'
+    - mkdir public
+    - cp -r *.py public # Copy only Python files (adjust based on your project)
+    - cp -r templates public # If you have a templates folder
+    - cp -r static public # If you have a static folder
   artifacts:
     paths:
       - public
