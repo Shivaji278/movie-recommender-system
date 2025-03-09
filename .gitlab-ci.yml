@@ -12,10 +12,11 @@ pages:
   script:
     - mkdir -p public
     - cp -r *.py public # Copy all Python files
-    - [ -d templates ] && cp -r templates public || echo "No templates directory found, skipping..."
-    - [ -d static ] && cp -r static public || echo "No static directory found, skipping..."
+    - if [ -d templates ]; then cp -r templates public; else echo "No templates directory found, skipping..."; fi
+    - if [ -d static ]; then cp -r static public; else echo "No static directory found, skipping..."; fi
+
   artifacts:
     paths:
       - public
   only:
-    - main
+    - main 
